@@ -11,8 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.nilesh.bhuswami.MainActivity;
 import com.nilesh.bhuswami.R;
 import com.nilesh.bhuswami.activities.FragmentChangeListener;
@@ -23,6 +27,8 @@ public class LoginFragment extends Fragment {
     TextInputEditText mail,pass;
     Button login;
     TextView txtsgn;
+    FirebaseAuth mAuth;
+    String lmail,lpass;
 
 
     public LoginFragment() {
@@ -54,16 +60,29 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_login, container, false);
 
-        mail = v.findViewById(R.id.editTextEmail);
-        pass = v.findViewById(R.id.editTextPassword);
+        mail = v.findViewById(R.id.leditTextEmail);
+        pass = v.findViewById(R.id.leditTextPassword);
         txtsgn = v.findViewById(R.id.signup_txt);
         login = v.findViewById(R.id.cirLoginButton);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getContext(), MainActivity.class);
-                startActivity(i);
+
+                lmail = mail.getText().toString();
+                lpass = pass.getText().toString();
+                mAuth = FirebaseAuth.getInstance();
+
+                if (lmail != null && lpass != null) {
+
+            mAuth.signInWithEmailAndPassword(lmail,lpass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                 public void onSuccess(AuthResult authResult) {
+                    Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getContext(), MainActivity.class));
+                }
+            });
+                }
 
             }
         });

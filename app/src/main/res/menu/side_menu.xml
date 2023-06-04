@@ -7,6 +7,9 @@
         android:title="@string/explore"
         android:id="@+id/explore"/>
     <item
+        android:title="@string/add_details"
+        android:id="@+id/adddata"/>
+    <item
         android:title="@string/profile"
         android:id="@+id/profile"/>
 </menu>

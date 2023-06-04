@@ -10,10 +10,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nilesh.bhuswami.R;
 import com.nilesh.bhuswami.activities.FragmentChangeListener;
+import com.nilesh.bhuswami.models.Users;
 
 
 public class RegisterFragment extends Fragment {
@@ -21,6 +28,10 @@ public class RegisterFragment extends Fragment {
     TextInputEditText name,email,passw,mobile;
     Button signup;
     TextView txtlgn;
+    FirebaseAuth mAuth;
+    String id,rname,remail,rpassw,rmobile;
+    FirebaseDatabase mData;
+    DatabaseReference databaseReference;
 
 
     public RegisterFragment() {
@@ -62,6 +73,39 @@ public class RegisterFragment extends Fragment {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                rname = name.getText().toString();
+                rmobile = mobile.getText().toString();
+                remail = email.getText().toString();
+                rpassw = passw.getText().toString();
+                id = rmobile;
+                mAuth = FirebaseAuth.getInstance();
+                mAuth.createUserWithEmailAndPassword(remail,rpassw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        databaseReference = FirebaseDatabase.getInstance().getReference();
+                        Users users = new Users();
+
+                        databaseReference.child("Users").child(id).child("name").setValue(rname);
+                        databaseReference.child("Users").child(id).child("email").setValue(remail);
+                        databaseReference.child("Users").child(id).child("phone").setValue(rmobile);
+
+
+//                        databaseReference.child("Customer").child(id).child("address").setValue(locate);
+//                        databaseReference.child("Customer").child(id).child("type").setValue(type);
+//                    databaseReference.child("Customer").child(id).child("type").setValue(type);
+
+
+                        Toast.makeText(getContext(),"Registered Succesfully! Please Login",Toast.LENGTH_LONG).show();
+                        Fragment fragment = new LoginFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.logregholder,fragment,fragment.toString())
+                                .addToBackStack(null)
+                                .commit();
+
+
+                    }
+                });
 
             }
         });

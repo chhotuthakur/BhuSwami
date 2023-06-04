@@ -28,7 +28,7 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/leditTextEmail"
                 style="@style/modifiedEditText"
                 android:hint="@string/login_email_hint"
                 android:inputType="textEmailAddress"
@@ -41,7 +41,7 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/leditTextPassword"
                 style="@style/modifiedEditText"
                 android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
