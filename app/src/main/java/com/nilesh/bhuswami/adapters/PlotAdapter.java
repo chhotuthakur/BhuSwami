@@ -1,15 +1,11 @@
 package com.nilesh.bhuswami.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,13 +15,18 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.nilesh.bhuswami.R;
-import com.nilesh.bhuswami.activities.MainActivity;
-import com.nilesh.bhuswami.fragments.DashboardFragment;
 import com.nilesh.bhuswami.models.Plots;
+
+import java.util.List;
 
 public class PlotAdapter  extends FirebaseRecyclerAdapter<Plots,PlotAdapter.plotViewHolder>  {
    private  Context context;
-//9630158652
+
+   private  List<Plots>list;
+   private ItemClickListener clickListener;
+
+
+   //9630158652
     public PlotAdapter(@NonNull FirebaseRecyclerOptions<Plots> options) {
         super(options);
     }
@@ -35,16 +36,24 @@ public class PlotAdapter  extends FirebaseRecyclerAdapter<Plots,PlotAdapter.plot
         this.context = context;
     }
 
+    public PlotAdapter(@NonNull FirebaseRecyclerOptions<Plots> options, List<Plots> list) {
+        super(options);
+        this.list = list;
+        this.clickListener = clickListener;
+    }
+
     @Override
     protected void onBindViewHolder(@NonNull PlotAdapter.plotViewHolder holder, int position, @NonNull Plots model) {
 
 
-        holder.title.setText(model.getTitle());
-        Glide.with(holder.pimage.getContext()).load(model.getImage1_url())
+        holder.title.setText(list.get(position).getTitle());
+        Glide.with(holder.pimage.getContext()).load(list.get(position).getImage1_url())
                 .into(holder.pimage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                clickListener.onItemClick(list.get(position));
 
             }
         });
@@ -80,5 +89,8 @@ public class PlotAdapter  extends FirebaseRecyclerAdapter<Plots,PlotAdapter.plot
 
 
         }
+    }
+    public interface ItemClickListener{
+        public void onItemClick(Plots plots);
     }
 }
