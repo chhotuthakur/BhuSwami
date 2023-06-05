@@ -17,18 +17,23 @@
         android:layout_height="200dp"
         android:layout_margin="8dp"
         card_view:cardUseCompatPadding="true"
-        card_view:cardBackgroundColor="@color/primaryTextColor"
         card_view:cardCornerRadius="4dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image_plot"
+            android:scaleType="fitXY"/>
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp">
         <TextView
             android:id="@+id/info_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/short_title_demo"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
+            android:background="@color/white"
             style="@style/headerText"
             android:layout_marginBottom="8dp"
             android:textSize="18sp"

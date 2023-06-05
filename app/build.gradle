@@ -51,4 +51,7 @@ dependencies {
 
     // FirebaseUI for Cloud Storage
     implementation 'com.firebaseui:firebase-ui-storage:8.0.2'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
 }
