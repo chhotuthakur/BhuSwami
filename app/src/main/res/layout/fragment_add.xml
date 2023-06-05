@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddFragment">
+
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/loginButton"
+            android:id="@+id/choose_button"
+            android:text="@string/select_image"
+            android:layout_marginTop="@dimen/loginViewsMargin"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/plot_image"
+            android:background="@drawable/ic_launcher_background"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:scaleType="fitXY"
+            android:text="@string/select_image"
+            android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputPlotName"
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPlotName"
+                style="@style/modifiedEditText"
+                android:hint="@string/plot_title"
+                android:inputType="textPersonName"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputPrice"
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPrice"
+                style="@style/modifiedEditText"
+                android:hint="@string/plot_price"
+                android:inputType="phone"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputDescri"
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDescri"
+                style="@style/modifiedEditText"
+                android:hint="@string/description"
+                android:layout_height="150dp"
+                android:gravity="start"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/textInputPassword"-->
+<!--            style="@style/parent"-->
+<!--            android:layout_marginTop="@dimen/loginViewsMargin">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/editTextPassword"-->
+<!--                style="@style/modifiedEditText"-->
+<!--                android:hint="@string/login_password_hint"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:maxLines="1"-->
+<!--                />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            style="@style/loginButton"
+            android:text="@string/add_details"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -4,4 +4,9 @@
     <string name="explore">Explore</string>
     <string name="myproperty">My Property</string>
     <string name="add_details">Add New Plot</string>
+    <string name="select_image">Select Image</string>
+    <string name="description">Plot Description</string>
+    <string name="plot_price">Plot Price</string>
+    <string name="plot_title">Title</string>
+    <string name="short_title_demo">This is a demo title to show how it works</string>
 </resources>

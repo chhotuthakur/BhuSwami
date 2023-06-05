@@ -1,6 +1,5 @@
-package com.nilesh.bhuswami;
+package com.nilesh.bhuswami.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,9 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
+import com.nilesh.bhuswami.R;
+import com.nilesh.bhuswami.fragments.AddFragment;
 import com.nilesh.bhuswami.fragments.DashboardFragment;
 import com.nilesh.bhuswami.fragments.ExploreFragment;
 import com.nilesh.bhuswami.fragments.ProfileFragment;
@@ -80,13 +80,12 @@ public class MainActivity extends AppCompatActivity {
             fragmentClass = ExploreFragment.class;
         } else if (itemId == R.id.profile) {
             fragmentClass = ProfileFragment.class;
-            //            case R.id.cust_side_profile:
-//                fragmentClass = ProfileFragment.class;
-//                break;
-//            case R.id.cust_side_noti:
-//                fragmentClass = NotiFragment.class;
-//                break;
-        } else {
+
+        }
+        else if (itemId == R.id.adddata) {
+            fragmentClass = AddFragment.class;
+
+        }else {
             fragmentClass = DashboardFragment.class;
         }
 

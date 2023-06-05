@@ -2,56 +2,47 @@ package com.nilesh.bhuswami.models;
 
 public class Plots {
 
-    String id,pname,pdetails,pimage,price;
+   String ids,image1_url,price,title;
 
-    public Plots() {
-    }
+   public Plots() {
+   }
 
-    public Plots(String id, String pname, String pdetails, String pimage, String price) {
-        this.id = id;
-        this.pname = pname;
-        this.pdetails = pdetails;
-        this.pimage = pimage;
-        this.price = price;
-    }
+   public Plots(String ids, String image1_url, String price, String title) {
+      this.ids = ids;
+      this.image1_url = image1_url;
+      this.price = price;
+      this.title = title;
+   }
 
-    public String getId() {
-        return id;
-    }
+   public String getIds() {
+      return ids;
+   }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+   public void setIds(String ids) {
+      this.ids = ids;
+   }
 
-    public String getPname() {
-        return pname;
-    }
+   public String getImage1_url() {
+      return image1_url;
+   }
 
-    public void setPname(String pname) {
-        this.pname = pname;
-    }
+   public void setImage1_url(String image1_url) {
+      this.image1_url = image1_url;
+   }
 
-    public String getPdetails() {
-        return pdetails;
-    }
+   public String getPrice() {
+      return price;
+   }
 
-    public void setPdetails(String pdetails) {
-        this.pdetails = pdetails;
-    }
+   public void setPrice(String price) {
+      this.price = price;
+   }
 
-    public String getPimage() {
-        return pimage;
-    }
+   public String getTitle() {
+      return title;
+   }
 
-    public void setPimage(String pimage) {
-        this.pimage = pimage;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
+   public void setTitle(String title) {
+      this.title = title;
+   }
 }
