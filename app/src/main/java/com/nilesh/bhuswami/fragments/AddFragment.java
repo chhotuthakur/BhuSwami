@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -15,9 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,6 +32,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.nilesh.bhuswami.R;
 
+import java.util.EventListener;
 import java.util.UUID;
 
 /**
@@ -140,6 +148,9 @@ public class AddFragment extends Fragment {
                     public void onSuccess(Uri uri) {
                         final String randomCode2 = UUID.randomUUID().toString().substring(0, 7);
                         ids = randomCode2;
+                        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                        FirebaseUser muser = mAuth.getCurrentUser();
+                        String author = muser.getEmail().toString();
 
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference("plots")
                                 .child(ids)
@@ -148,6 +159,41 @@ public class AddFragment extends Fragment {
                         db.getDatabase().getReference("plots").child(ids).child("title").setValue(titl);
                         db.getDatabase().getReference("plots").child(ids).child("desc").setValue(descrip);
                         db.getDatabase().getReference("plots").child(ids).child("price").setValue(prices);
+                        db.getDatabase().getReference().child("plots").child(ids).child("author").setValue(author);
+
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("plots");
+                      databaseReference.addChildEventListener(new ChildEventListener() {
+                          @Override
+                          public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                              Toast.makeText(getContext(), "Plot Added Succesfully", Toast.LENGTH_LONG).show();
+                              imgv.setImageDrawable(null);
+                              tit.setText(null);
+                              price.setText(null);
+                              desc.setText(null);
+
+
+                          }
+
+                          @Override
+                          public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                          }
+
+                          @Override
+                          public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                          }
+
+                          @Override
+                          public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                          }
+
+                          @Override
+                          public void onCancelled(@NonNull DatabaseError error) {
+
+                          }
+                      });
                     }
 
                 });

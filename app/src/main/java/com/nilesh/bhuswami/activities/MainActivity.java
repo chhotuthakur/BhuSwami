@@ -78,10 +78,11 @@ public class MainActivity extends AppCompatActivity {
             fragmentClass = DashboardFragment.class;
         } else if (itemId == R.id.explore) {
             fragmentClass = ExploreFragment.class;
-        } else if (itemId == R.id.profile) {
-            fragmentClass = ProfileFragment.class;
-
         }
+//        else if (itemId == R.id.profile) {
+//            fragmentClass = ProfileFragment.class;
+//
+//        }
         else if (itemId == R.id.adddata) {
             fragmentClass = AddFragment.class;
 
