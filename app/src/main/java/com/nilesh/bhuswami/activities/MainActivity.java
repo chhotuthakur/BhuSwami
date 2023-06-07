@@ -7,10 +7,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nilesh.bhuswami.R;
 import com.nilesh.bhuswami.fragments.AddFragment;
 import com.nilesh.bhuswami.fragments.DashboardFragment;
@@ -21,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    FirebaseAuth mAuth ;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,19 +79,33 @@ public class MainActivity extends AppCompatActivity {
     private void selectDrawerItem(MenuItem menuItem) {
 
         Fragment fragment = null;
-        Class fragmentClass;
+        Class fragmentClass = null;
         int itemId = menuItem.getItemId();
         if (itemId == R.id.dashboard) {
             fragmentClass = DashboardFragment.class;
         } else if (itemId == R.id.explore) {
             fragmentClass = ExploreFragment.class;
         }
-//        else if (itemId == R.id.profile) {
-//            fragmentClass = ProfileFragment.class;
-//
-//        }
+        else if (itemId == R.id.profile) {
+            fragmentClass = ProfileFragment.class;
+        }
         else if (itemId == R.id.adddata) {
             fragmentClass = AddFragment.class;
+        }
+             else if (itemId == R.id.logoutmenu) {
+
+                 mAuth = FirebaseAuth.getInstance();
+                 user = mAuth.getCurrentUser();
+                 mAuth.signOut();
+                 if (user == null){
+                     Toast.makeText(this, "SignOut Success", Toast.LENGTH_LONG).show();
+                     startActivity(new Intent(MainActivity.this,AccountActivity.class));
+                     finish();
+                 }
+
+
+//                FirebaseAuth.getInstance().signOut();
+
 
         }else {
             fragmentClass = DashboardFragment.class;

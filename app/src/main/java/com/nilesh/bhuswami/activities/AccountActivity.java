@@ -37,8 +37,8 @@ public class AccountActivity extends FragmentActivity implements FragmentChangeL
 
         manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
-                transaction.replace(R.id.logregholder,loginFragment);
-                transaction.commit();
+        transaction.replace(R.id.logregholder,loginFragment);
+        transaction.commit();
 
 
 

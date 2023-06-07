@@ -9,4 +9,8 @@
     <string name="plot_price">Plot Price</string>
     <string name="plot_title">Title</string>
     <string name="short_title_demo">This is a demo title to show how it works</string>
+    <string name="user_name">Full name</string>
+    <string name="email">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="log_out">Log Out</string>
 </resources>

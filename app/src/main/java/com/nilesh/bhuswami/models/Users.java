@@ -1,17 +1,16 @@
 package com.nilesh.bhuswami.models;
 
 public class Users {
-    String id,uname,uemail,upassw,umobile;
+    String id,name,email,phone;
 
     public Users() {
     }
 
-    public Users(String id,String uname, String uemail, String upassw, String umobile) {
-        this.id =id;
-        this.uname = uname;
-        this.uemail = uemail;
-        this.upassw = upassw;
-        this.umobile = umobile;
+    public Users(String id, String name, String email, String phone) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
     }
 
     public String getId() {
@@ -22,35 +21,27 @@ public class Users {
         this.id = id;
     }
 
-    public String getUname() {
-        return uname;
+    public String getName() {
+        return name;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUemail() {
-        return uemail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUemail(String uemail) {
-        this.uemail = uemail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUpassw() {
-        return upassw;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUpassw(String upassw) {
-        this.upassw = upassw;
-    }
-
-    public String getUmobile() {
-        return umobile;
-    }
-
-    public void setUmobile(String umobile) {
-        this.umobile = umobile;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

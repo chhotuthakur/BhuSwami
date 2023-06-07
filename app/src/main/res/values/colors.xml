@@ -9,4 +9,5 @@
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
+    <color name="blue">#002991</color>
 </resources>

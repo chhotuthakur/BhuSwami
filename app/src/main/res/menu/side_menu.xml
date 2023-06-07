@@ -9,7 +9,11 @@
     <item
         android:title="@string/add_details"
         android:id="@+id/adddata"/>
-<!--    <item-->
-<!--        android:title="@string/profile"-->
-<!--        android:id="@+id/profile"/>-->
+    <item
+        android:title="@string/profile"
+        android:id="@+id/profile"/>
+
+    <item
+        android:title="@string/log_out"
+        android:id="@+id/logoutmenu"/>
 </menu>
